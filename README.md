@@ -1,4 +1,4 @@
-# shopify
+# code-payments-assignment
 
 ## Project setup
 ```
