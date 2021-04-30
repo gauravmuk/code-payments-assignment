@@ -24,7 +24,8 @@ export default new Vuex.Store({
   mutations: {
     filterProducts(state, keyword) {
       state.filteredProducts = state.products.filter(
-        (product) => product.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+        (product) =>
+          product.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
       );
     },
     clearSearch(state) {
