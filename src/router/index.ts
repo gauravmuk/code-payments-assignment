@@ -23,8 +23,10 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
-  scrollBehavior(to) {
+  scrollBehavior(to, from, savedPosition) {
     if (to.name === `${ProductRoute.DETAILS}`) return { x: 0, y: 0 };
+
+    return savedPosition;
   },
 });
 
