@@ -17,6 +17,7 @@ import router from "@/router";
 import ProductListItem from "@/components/ProductListItem.vue";
 import { IProduct } from "@/interfaces/Product";
 import { Namespace, Product } from "@/store/enums";
+import { ProductRoute } from "@/router/enums";
 
 /**
  * Component which displays the list of products
@@ -37,7 +38,7 @@ export default class ProductList extends Vue {
    */
   onItemClick(product: IProduct): void {
     router.push({
-      name: "product.details",
+      name: `${ProductRoute.DETAILS}`,
       params: { productId: String(product.id) },
     });
   }
