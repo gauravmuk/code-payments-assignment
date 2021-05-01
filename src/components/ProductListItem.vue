@@ -25,10 +25,17 @@ export default class ProductListItem extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+$product-list-item-margin: 20px;
+$product-list-item-border-width: 1px;
+$product-list-item-width-adjustment: (
+    $product-list-item-margin + $product-list-item-border-width
+  ) * 2;
+
 .product-list-item {
   display: flex;
   flex-direction: column;
-  border: 1px solid lightgrey;
-  margin: 20px;
+  border: $product-list-item-border-width solid lightgray;
+  margin: $product-list-item-margin;
+  width: calc(50% - #{$product-list-item-width-adjustment});
 }
 </style>
