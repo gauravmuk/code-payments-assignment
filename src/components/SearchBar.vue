@@ -13,6 +13,9 @@ import { Namespace, Product } from "@/store/enums";
 import { Component, Vue } from "vue-property-decorator";
 import { mapActions } from "vuex";
 
+/**
+ * Search bar component which filters the product list
+ */
 @Component({
   computed: {
     ...mapActions([

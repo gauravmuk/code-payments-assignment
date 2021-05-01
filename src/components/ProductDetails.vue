@@ -1,12 +1,17 @@
 <template>
-  <div class="product-detail-container">
-    <img :src="productData.logoLocation" loading="lazy" />
+  <div class="product-detail-container" v-if="productData">
+    <img
+      :src="productData.logoLocation"
+      loading="lazy"
+      :alt="productData.name"
+    />
     <h1 v-html="productData.name"></h1>
     <h2 v-html="productData.productTitle"></h2>
     <span class="shrink-width" v-html="productData.shortDescription"></span>
     <h3 v-html="productData.productTagline"></h3>
     <span class="shrink-width" v-html="productData.longDescription"></span>
   </div>
+  <div v-else>No Product Found</div>
 </template>
 
 <script lang="ts">
@@ -15,6 +20,10 @@ import { Namespace, Product } from "@/store/enums";
 import { Component, Vue } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 
+/**
+ * Component which shows the details of a product.
+ * Gets the data from the store for a specific product by id.
+ */
 @Component({
   computed: {
     ...mapGetters({
@@ -25,6 +34,9 @@ import { mapGetters } from "vuex";
 export default class ProductDetails extends Vue {
   getProductById!: (id: number) => IProduct;
 
+  /**
+   * Get product details by id from the store using getProductById getter in Product Module
+   */
   get productData(): IProduct {
     return this.getProductById(Number(this.$route.params.productId));
   }
