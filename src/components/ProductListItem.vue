@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-import { Product } from "@/interfaces/Product";
+import { IProduct } from "@/interfaces/Product";
 import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class ProductListItem extends Vue {
   @Prop({ required: true })
-  productData!: Product;
+  productData!: IProduct;
 }
 </script>
 

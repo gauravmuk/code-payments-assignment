@@ -9,18 +9,32 @@
 </template>
 
 <script lang="ts">
+import { Namespace, Product } from "@/store/enums";
 import { Component, Vue } from "vue-property-decorator";
+import { mapActions } from "vuex";
 
-@Component
+@Component({
+  computed: {
+    ...mapActions([
+      `${Namespace.PRODUCT}/${Product.filterProducts}`,
+      `${Namespace.PRODUCT}/${Product.clearSearch}`,
+    ]),
+  },
+})
 export default class SearchBar extends Vue {
   private keyword: string | number = "";
 
   onSearch(): void {
-    this.$store.commit("filterProducts", this.keyword);
+    this.$store.dispatch({
+      type: `${Namespace.PRODUCT}/${Product.filterProducts}`,
+      keyword: this.keyword,
+    });
   }
 
   destroyed(): void {
-    this.$store.commit("clearSearch");
+    this.$store.dispatch({
+      type: `${Namespace.PRODUCT}/${Product.clearSearch}`,
+    });
   }
 }
 </script>

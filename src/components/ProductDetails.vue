@@ -10,19 +10,22 @@
 </template>
 
 <script lang="ts">
-import { Product } from "@/interfaces/Product";
+import { IProduct } from "@/interfaces/Product";
+import { Namespace, Product } from "@/store/enums";
 import { Component, Vue } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 
 @Component({
   computed: {
-    ...mapGetters(["getProductById"]),
+    ...mapGetters({
+      getProductById: `${Namespace.PRODUCT}/${Product.getProductById}`,
+    }),
   },
 })
 export default class ProductDetails extends Vue {
-  getProductById!: (id: number) => Product;
+  getProductById!: (id: number) => IProduct;
 
-  get productData(): Product {
+  get productData(): IProduct {
     return this.getProductById(Number(this.$route.params.productId));
   }
 }

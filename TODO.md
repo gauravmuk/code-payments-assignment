@@ -1,6 +1,8 @@
 # TODO's
 
-- Write Unit Test Cases
+- Write Unit Test Cases (SearchBar)
 - Code Review
 - UI Fixes
-- Use Enums
+- Use Enums (Done)
+- Move to modules (Done)
+- Use actions (Done)

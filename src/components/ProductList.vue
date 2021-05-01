@@ -14,18 +14,21 @@ import { Component, Vue } from "vue-property-decorator";
 import { mapGetters } from "vuex";
 import router from "@/router";
 import ProductListItem from "@/components/ProductListItem.vue";
-import { Product } from "@/interfaces/Product";
+import { IProduct } from "@/interfaces/Product";
+import { Namespace, Product } from "@/store/enums";
 
 @Component({
   components: {
     ProductListItem,
   },
-  computed: mapGetters({ products: "getFilteredProductsList" }),
+  computed: mapGetters({
+    products: `${Namespace.PRODUCT}/${Product.getFilteredProductsList}`,
+  }),
 })
 export default class ProductList extends Vue {
-  products!: Array<Product>;
+  products!: Array<IProduct>;
 
-  onItemClick(product: Product): void {
+  onItemClick(product: IProduct): void {
     router.push({
       name: "product.details",
       params: { productId: String(product.id) },
